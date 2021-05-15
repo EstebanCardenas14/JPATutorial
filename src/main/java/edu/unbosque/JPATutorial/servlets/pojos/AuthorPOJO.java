@@ -6,9 +6,9 @@ public class AuthorPOJO {
 
     private String name;
 
-    private Integer numBooks;
-    
     private String country;
+
+    private Integer numBooks;
 
     public AuthorPOJO() { }
 
