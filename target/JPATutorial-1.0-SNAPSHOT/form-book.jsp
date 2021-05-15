@@ -14,6 +14,10 @@
     <br />
     Book Genre: <input type="text" id="genre" name="genre">
     <br />
+    Release Year: <input type="date" id="release_year" name="release_year">
+    <br />
+    Description: <input type="date" id="description" name="description">
+    <br />
     <input type="submit" value="Create book!">
 </form>
 
