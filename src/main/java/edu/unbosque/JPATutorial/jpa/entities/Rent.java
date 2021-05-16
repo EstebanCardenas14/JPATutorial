@@ -5,11 +5,19 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Rent")
+@NamedQueries({
+        @NamedQuery(name = "Rent.findByDate",
+                query = "SELECT b FROM Rent b WHERE b.renting_Date = :renting_Date"),
+        @NamedQuery(name = "Rent.findAll",
+                query = "SELECT b FROM Rent b"),
+        @NamedQuery(name = "Rent.findByEmail",
+                query = "SELECT b FROM Rent b WHERE  b.customer.email = :email")
+})
 public class Rent {
 
     @Id
-    @Column(name = "rent_id")
     @GeneratedValue
+    @Column(name = "rent_id")
     private String rent_id;
 
     @ManyToOne
@@ -20,15 +28,15 @@ public class Rent {
     @JoinColumn(name = "edition_id")
     private Edition edition;
 
-    @Column(nullable = false)
+    @Column(name = "renting_Date",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date renting_Date;
 
     public Rent() {
 
     }
 
-    public Rent(String rent_id, Date renting_Date) {
-        this.rent_id = rent_id;
+    public Rent(Date renting_Date) {
         this.renting_Date = renting_Date;
     }
 
