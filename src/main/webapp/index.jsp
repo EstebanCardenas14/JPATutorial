@@ -85,6 +85,14 @@
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
+                            if (actions.includes('edit-author')){
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./edit-author.jsp?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Edit author');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
 
                         });
 
@@ -96,10 +104,10 @@
             }
 
             // Printing libraries
-            printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name']);
+            printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
 
             // Printing authors
-            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book', 'delete-author']);
+            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author']);
 
         </script>
 

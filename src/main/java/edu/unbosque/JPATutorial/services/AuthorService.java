@@ -54,6 +54,18 @@ public class AuthorService {
 
     }
 
+    public void  editAuthor (Integer Editid) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        authorRepository = new AuthorRepositoryImpl(entityManager);
+        authorRepository.editAuthor(Editid);
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+    }
+
     public void deleteAuthor(Integer authorId) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
