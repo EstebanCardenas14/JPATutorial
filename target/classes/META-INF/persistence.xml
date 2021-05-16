@@ -8,9 +8,14 @@
         <jta-data-source>java:/PostgresDS</jta-data-source>
         <class>edu.unbosque.JPATutorial.jpa.entities.Author</class>
         <class>edu.unbosque.JPATutorial.jpa.entities.Book</class>
+        <class>edu.unbosque.JPATutorial.jpa.entities.Customer</class>
         <class>edu.unbosque.JPATutorial.jpa.entities.Edition</class>
         <class>edu.unbosque.JPATutorial.jpa.entities.Library</class>
+<<<<<<< HEAD
 
+=======
+        <class>edu.unbosque.JPATutorial.jpa.entities.Rent</class>
+>>>>>>> 2f1a51f81d6fe1390be64e5e864bbcf211e32fe5
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect" />
