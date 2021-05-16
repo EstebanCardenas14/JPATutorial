@@ -1,4 +1,4 @@
-package edu.unbosque.JPATutorial.servlets.pojos;
+package edu.unbosque.JPATutorial.servlets;
 
 import edu.unbosque.JPATutorial.services.AuthorService;
 
@@ -11,11 +11,16 @@ import java.io.IOException;
 @WebServlet(name = "EditAuthorServlet", value = "/edit-author")
 public class EditAuthorServlet  extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
+        Integer authorId = Integer.parseInt(request.getParameter("authorId"));
         String name = request.getParameter("name");
         String country = request.getParameter("country");
 
+        
+
         AuthorService authorService = new AuthorService();
-        authorService.saveAuthor(name,country);
+        authorService.editAuthor(authorId,name,country);
 
         response.sendRedirect("./index.jsp");
 

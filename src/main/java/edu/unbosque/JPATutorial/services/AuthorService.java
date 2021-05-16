@@ -53,12 +53,13 @@ public class AuthorService {
         return persistedAuthor;
     }
 
-    public void  editAuthor (Integer Editid) {
+    public void  editAuthor (int Editid,String name, String country) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         authorRepository = new AuthorRepositoryImpl(entityManager);
-        authorRepository.editAuthor(Editid);
+
+        authorRepository.editAuthor(Editid, name, country);
 
         entityManager.close();
         entityManagerFactory.close();
