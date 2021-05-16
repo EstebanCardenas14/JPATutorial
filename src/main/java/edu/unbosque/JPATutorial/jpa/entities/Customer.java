@@ -1,15 +1,21 @@
 package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Customer") // Optional
+@NamedQueries({
+        @NamedQuery(name = "Customer.findByEmail",
+                query = "SELECT a FROM Customer a WHERE a.email = :email")
+})
 public class Customer {
     @Id
+    @Email(message = "Email should be valid")
     @Column(name = "email")
-    private Integer email;
+    private String email;
 
     @Column(nullable = false)
     private String first_name;
@@ -32,7 +38,7 @@ public class Customer {
 
     }
 
-    public Customer(Integer email, String first_name, String last_name, String gender, Integer age) {
+    public Customer(String email, String first_name, String last_name, String gender, Integer age) {
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -40,11 +46,11 @@ public class Customer {
         this.age = age;
     }
 
-    public Integer getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Integer email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

@@ -51,7 +51,6 @@ public class AuthorService {
         entityManagerFactory.close();
 
         return persistedAuthor;
-
     }
 
     public void  editAuthor (Integer Editid) {

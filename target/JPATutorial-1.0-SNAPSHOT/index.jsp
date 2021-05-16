@@ -17,6 +17,7 @@
 
         <button onclick="location.href='./form-library.jsp';">Create library</button>
         <button onclick="location.href='./form-author.jsp';">Create author</button>
+        <button onclick="location.href='./form-customer.jsp';">Create customer</button>
 
         <h3>Libraries</h3>
 
@@ -46,7 +47,22 @@
             <tbody>
             </tbody>
         </table>
+        <h3>Customers</h3>
 
+        <table id="customersTbl">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
         <script>
 
             function printTable(elementId, servlet, columns, actions = []) {
@@ -85,6 +101,14 @@
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
+                            if (actions.includes('delete-customer')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./delete-customer?email=' + d['email'] + '";');
+                                var text = document.createTextNode('Delete customer');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
                             if (actions.includes('edit-author')){
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
@@ -108,6 +132,9 @@
 
             // Printing authors
             printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author']);
+
+            // Printing customer
+            printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
 
         </script>
 
