@@ -117,6 +117,14 @@
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
+                            if (actions.includes('view-books')){
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-viewbook.jsp?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Edit author');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
 
                         });
 
@@ -131,7 +139,7 @@
             printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
 
             // Printing authors
-            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author']);
+            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','View Books']);
 
             // Printing customer
             printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name = "Edition") // Optional
+@Table(name = "EditionService") // Optional
 @NamedQueries({
         @NamedQuery(name = "Edition.findAll",
                 query = "SELECT b FROM Edition b")
