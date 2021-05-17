@@ -17,7 +17,7 @@ public class EditAuthorServlet  extends HttpServlet {
         String name = request.getParameter("name");
         String country = request.getParameter("country");
 
-        
+
 
         AuthorService authorService = new AuthorService();
         authorService.editAuthor(authorId,name,country);

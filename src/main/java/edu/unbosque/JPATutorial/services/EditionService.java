@@ -71,7 +71,7 @@ public class EditionService {
         entityManagerFactory.close();
     }
 
-    public void deleteEdition(){
+    public void editEdition(){
 
     }
 }
