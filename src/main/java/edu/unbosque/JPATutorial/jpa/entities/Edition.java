@@ -20,6 +20,7 @@ public class Edition {
     private String description;
 
     @Column(name = "release_year")
+    @Temporal(TemporalType.DATE)
     private Date releaseYear;
 
     @ManyToOne

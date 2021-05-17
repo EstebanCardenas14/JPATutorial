@@ -4,27 +4,26 @@ import java.util.Date;
 
 public class EditionPOJO {
 
-    private int edition_id;
+     private Integer edition_Id;
 
-    private String description;
+     private String description;
 
-    private Date release_year;
+     private Date release_year;
 
-    private int book_id;
+     private Integer book_id;
 
-    public EditionPOJO(int edition_id, String description, Date release_year, int book_id) {
-        this.edition_id = edition_id;
+    public EditionPOJO(Integer edition_Id, String description, Date release_year, Integer book_id) {
+        this.edition_Id = edition_Id;
         this.description = description;
         this.release_year = release_year;
         this.book_id = book_id;
     }
-
-    public int getEdition_id() {
-        return edition_id;
+    public Integer getEdition_Id() {
+        return edition_Id;
     }
 
-    public void setEdition_id(int edition_id) {
-        this.edition_id = edition_id;
+    public void setEdition_Id(Integer edition_Id) {
+        this.edition_Id = edition_Id;
     }
 
     public String getDescription() {
@@ -43,11 +42,11 @@ public class EditionPOJO {
         this.release_year = release_year;
     }
 
-    public int getBook_id() {
+    public Integer getBook_id() {
         return book_id;
     }
 
-    public void setBook_id(int book_id) {
+    public void setBook_id(Integer book_id) {
         this.book_id = book_id;
     }
 }

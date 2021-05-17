@@ -28,7 +28,6 @@ public class AuthorService {
         entityManager.close();
         entityManagerFactory.close();
 
-
         List<AuthorPOJO> authorsPOJO = new ArrayList<>();
         for (Author author : authors) {
             authorsPOJO.add(new AuthorPOJO(author.getAuthorId(), author.getName(), author.getBooks().size(), author.getCountry()));
@@ -76,7 +75,6 @@ public class AuthorService {
 
         entityManager.close();
         entityManagerFactory.close();
-
     }
 
 }
