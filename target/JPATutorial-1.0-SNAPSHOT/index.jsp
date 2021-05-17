@@ -83,7 +83,9 @@
                         var text = document.createTextNode(d[c]);
                         cell.appendChild(text);
                     });
+                    if(actions.includes('create')){
 
+                    }
                     if (actions.includes('create-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
