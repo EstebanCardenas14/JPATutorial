@@ -1,10 +1,8 @@
 package edu.unbosque.JPATutorial.servlets;
 
 import com.google.gson.Gson;
-import edu.unbosque.JPATutorial.services.AuthorService;
-import edu.unbosque.JPATutorial.services.ViewBookService;
-import edu.unbosque.JPATutorial.servlets.pojos.AuthorPOJO;
-import edu.unbosque.JPATutorial.servlets.pojos.ViewBookPOJO;
+import edu.unbosque.JPATutorial.services.BookService;
+import edu.unbosque.JPATutorial.servlets.pojos.BookPOJO;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "listAuthorsServlet", value = "/list-viewBooks")
+@WebServlet(name = "listViewBooksServlet", value = "/list-viewBooks")
 public class ListViewBooksServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -22,13 +20,13 @@ public class ListViewBooksServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        ViewBookService viewBookService = new ViewBookService();
+        BookService bookService = new BookService();
+        List<BookPOJO> books =  bookService.listBooks();
 
-
-
+        String booksJSONString = new Gson().toJson(books);
+        System.out.println("LIBROOOOOOOOOS "+booksJSONString);
         PrintWriter out = response.getWriter();
-        out.print("");
+        out.print(booksJSONString);
         out.flush();
     }
-
 }

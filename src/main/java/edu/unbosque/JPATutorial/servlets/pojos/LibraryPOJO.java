@@ -1,5 +1,7 @@
 package edu.unbosque.JPATutorial.servlets.pojos;
 
+import edu.unbosque.JPATutorial.jpa.entities.Author;
+
 public class LibraryPOJO {
 
     private Integer libraryId;
@@ -12,6 +14,8 @@ public class LibraryPOJO {
         this.libraryId = libraryId;
         this.name = name;
     }
+
+
 
     public Integer getLibraryId() {
         return libraryId;

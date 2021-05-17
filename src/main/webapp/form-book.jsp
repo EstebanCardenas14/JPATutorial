@@ -5,20 +5,6 @@
     <title>JPA Tutorial</title>
 </head>
 <body>
-<table id="authorsTbl">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Country</th>
-        <th># Books</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-
 <form action="./create-book">
     <input type="hidden" id="authorId" name="authorId" value ="<%= request.getParameter("authorId") %>">
     Book title: <input type="text" id="title" name="title">

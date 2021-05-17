@@ -73,19 +73,13 @@
                 var data = JSON.parse(xhr.responseText);
                 console.log(data)
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
-
                 data.map(d => {
-
                     var newRow = tbodyRef.insertRow();
-
                     columns.map(c => {
                         var cell = newRow.insertCell();
                         var text = document.createTextNode(d[c]);
                         cell.appendChild(text);
                     });
-                    if(actions.includes('create')){
-
-                    }
                     if (actions.includes('create-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -111,6 +105,7 @@
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
+
                     if (actions.includes('edit-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -119,20 +114,53 @@
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
-                    if (actions.includes('view-books')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./form-viewbook.jsp?authorId=' + d['authorId'] + '";');
-                        var text = document.createTextNode('Edit author');
-                    }
                     if (actions.includes('edit-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-book.jsp?authorId=' + d['authorId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./edit-book.jsp?bookId=' + d['bookId'] + '";');
                         var text = document.createTextNode('Edit book');
-
                         action.appendChild(text);
                         cell.appendChild(action);
+                    }
+
+                    if (actions.includes('view-books')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./view-book.jsp?bookId=' + d['bookId'] + '";');
+                        var text = document.createTextNode('View book');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+                    }
+
+
+                    if (actions.includes('delete-library')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./delete-Library?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Delete Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+
+                    if (actions.includes('edit-library')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Edit Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+
+                    if (actions.includes('edit-customer')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-customer.jsp?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Edit Customer');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
                     }
                 });
             }
@@ -143,11 +171,10 @@
     // Printing libraries
     printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
     // Printing authors
-    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author']);
+    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','view-books']);
     // Printing customer
     printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
-
-</script>
+  </script>
 
 </body>
 </html>
