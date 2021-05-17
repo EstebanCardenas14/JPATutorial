@@ -10,7 +10,7 @@ En este taller se desarrollo una pequeña base de datos de una libreria y se cre
 ## Video 🎬
 
 
-## Lenguajes 
+## Lenguajes 🤖
 - Java Version 1.8
 - Html
 - Css
