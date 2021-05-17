@@ -22,3 +22,6 @@ En este taller se desarrollo una pequeña base de datos de una libreria y se cre
 * Esteban Cardenas Cortez  
 * Cristian David Sanchez Malagon 
 * Esteban Uribe Calderon 
+
+
+Hecho con ❤️ y mucha desesperación :3
