@@ -19,7 +19,6 @@ public class ListLibrariesServlet extends HttpServlet {
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
         LibraryService libraryService = new LibraryService();
         List<LibraryPOJO> libraries =  libraryService.listLibraries();
 

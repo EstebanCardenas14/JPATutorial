@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "listAuthorsServlet", value = "/list-viewBooks")
+@WebServlet(name = "listViewBooksServlet", value = "/list-viewBooks")
 public class ListViewBooksServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -21,13 +21,12 @@ public class ListViewBooksServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         BookService bookService = new BookService();
-        List<BookPOJO> bookPOJOS =  bookService.listBooks();
+        List<BookPOJO> books =  bookService.listBooks();
 
-        String librariesJsonString = new Gson().toJson(bookPOJOS);
-
+        String booksJSONString = new Gson().toJson(books);
+        System.out.println("LIBROOOOOOOOOS "+booksJSONString);
         PrintWriter out = response.getWriter();
-        out.print(librariesJsonString);
+        out.print(booksJSONString);
         out.flush();
     }
-
 }

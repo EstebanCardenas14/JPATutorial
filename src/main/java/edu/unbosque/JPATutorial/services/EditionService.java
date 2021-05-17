@@ -59,7 +59,7 @@ public class EditionService {
         return editionPOJOS;
     }
 
-    public void editEdition(Integer id, String description, String relaseYear, Integer book_Id){
+    public void editEdition(Integer id, String description, Date relaseYear, Integer book_Id){
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

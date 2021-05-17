@@ -39,8 +39,8 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th># Books</th>
         <th>Country</th>
+        <th># Books</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -71,21 +71,15 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
-
+                console.log(data)
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
-
                 data.map(d => {
-
                     var newRow = tbodyRef.insertRow();
-
                     columns.map(c => {
                         var cell = newRow.insertCell();
                         var text = document.createTextNode(d[c]);
                         cell.appendChild(text);
                     });
-                    if(actions.includes('create')){
-
-                    }
                     if (actions.includes('create-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -111,18 +105,11 @@
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
+
                     if (actions.includes('edit-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
                         action.setAttribute('onclick', 'location.href="./edit-author.jsp?authorId=' + d['authorId'] + '";');
-                        var text = document.createTextNode('Edit author');
-                        action.appendChild(text);
-                        cell.appendChild(action);
-                    }
-                    if (actions.includes('view-books')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./form-viewbook.jsp?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('Edit author');
                         action.appendChild(text);
                         cell.appendChild(action);
@@ -135,6 +122,16 @@
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
+
+                    if (actions.includes('view-books')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./view-book.jsp?bookId=' + d['bookId'] + '";');
+                        var text = document.createTextNode('View book');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+                    }
+
 
                     if (actions.includes('delete-library')) {
                         var cell = newRow.insertCell();
@@ -174,10 +171,9 @@
     // Printing libraries
     printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
     // Printing authors
-    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'numBooks', 'country'], actions = ['create-book','edit-author' ,'delete-author','view-book']);
+    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','view-books']);
     // Printing customer
     printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
-
 </script>
 
 </body>
