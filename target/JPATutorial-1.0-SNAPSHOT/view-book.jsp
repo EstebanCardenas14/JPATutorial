@@ -66,12 +66,30 @@
 
                     }
 
+                    if (actions.includes('edit-book')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-book.jsp?bookId=' + d['bookId'] + '";');
+                        var text = document.createTextNode('Edit book');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+                    }
+
+                    if (actions.includes('edition-book')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-edition.jsp?bookId=' + d['bookId'] + '";');
+                        var text = document.createTextNode('Edit book');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+                    }
+
 
                 })
             }
         }
     }
-    printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['bookId', 'genre','isbn_number','title','author_id'], actions = ['edition-book','delete-book']);
+    printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['bookId', 'genre','isbn_number','title','author_id'], actions = ['edition-book','delete-book','edit-book']);
 
 </script>
 </body>
