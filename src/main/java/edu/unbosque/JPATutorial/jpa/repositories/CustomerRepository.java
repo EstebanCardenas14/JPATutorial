@@ -15,6 +15,6 @@ public interface CustomerRepository {
 
     void deleteByEmail(String email);
 
-    void editCustomer(String email);
+    void editCustomer(String email,String first_n, String last_n, String gender, Integer age);
 
 }

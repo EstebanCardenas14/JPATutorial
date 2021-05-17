@@ -1,13 +1,12 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.Customer;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
 
     private EntityManager entityManager;
 
@@ -63,7 +62,20 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
-    public void editCustomer(String email) {
-
+    public void editCustomer(String email, String first_n, String last_n, String gender, Integer age) {
+        Customer customer = entityManager.find(Customer.class, email);
+        if (customer != null) {
+            try {
+                entityManager.getTransaction().begin();
+                customer.setEmail(email);
+                customer.setFirst_name(first_n);
+                customer.setLast_name(last_n);
+                customer.setGender(gender);
+                customer.setAge(age);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -18,11 +18,12 @@ public class EditBookServlet extends HttpServlet {
         String isbn = request.getParameter("isbn");
         String genre = request.getParameter("genre");
         Integer authorId = Integer.parseInt(request.getParameter("authorId"));
+        Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 
 
 
         BookService bookService = new BookService();
-       bookService.editBook(authorId,title,isbn,authorId-1,genre);
+       bookService.editBook(bookId,title,isbn,authorId-1,genre);
         System.out.println("toca cambiar el primer authorid"+ title);
 
         response.sendRedirect("./index.jsp");

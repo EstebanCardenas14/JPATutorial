@@ -57,12 +57,24 @@ public class CustomerService {
 
     }
 
+
     public void deleteCustomer(String email){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         customerRepository = new CustomerRepositoryImpl(entityManager);
         customerRepository.deleteByEmail(email);
+
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+    public void  editCustomer(String email, String first_n, String last_n, String gender, Integer age){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        customerRepository = new CustomerRepositoryImpl(entityManager);
+        customerRepository.editCustomer(email,first_n,last_n,gender,age);
 
         entityManager.close();
         entityManagerFactory.close();

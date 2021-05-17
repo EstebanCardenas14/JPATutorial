@@ -1,10 +1,8 @@
 package edu.unbosque.JPATutorial.servlets;
 
 import com.google.gson.Gson;
-import edu.unbosque.JPATutorial.services.AuthorService;
-import edu.unbosque.JPATutorial.services.ViewBookService;
-import edu.unbosque.JPATutorial.servlets.pojos.AuthorPOJO;
-import edu.unbosque.JPATutorial.servlets.pojos.ViewBookPOJO;
+import edu.unbosque.JPATutorial.services.BookService;
+import edu.unbosque.JPATutorial.servlets.pojos.BookPOJO;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +20,13 @@ public class ListViewBooksServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        ViewBookService viewBookService = new ViewBookService();
+        BookService bookService = new BookService();
+        List<BookPOJO> bookPOJOS =  bookService.listBooks();
 
-
+        String librariesJsonString = new Gson().toJson(bookPOJOS);
 
         PrintWriter out = response.getWriter();
-        out.print("");
+        out.print(librariesJsonString);
         out.flush();
     }
 

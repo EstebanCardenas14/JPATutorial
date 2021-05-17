@@ -59,13 +59,13 @@ public class EditionService {
         return editionPOJOS;
     }
 
-    public void editEdition(Integer edition_id){
+    public void editEdition(Integer id, String description, String relaseYear, Integer book_Id){
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         editionRepository = new EditionRepositoryImpl(entityManager);
-        editionRepository.deleteById(edition_id);
+        editionRepository.editEdition(id,description,relaseYear,book_Id);
 
         entityManager.close();
         entityManagerFactory.close();

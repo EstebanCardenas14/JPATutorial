@@ -20,9 +20,7 @@ public class AuthorPOJO {
         
     }
 
-    public AuthorPOJO(Integer authorId, String name, String country, int size) {
 
-    }
 
     public Integer getAuthorId() {
         return authorId;

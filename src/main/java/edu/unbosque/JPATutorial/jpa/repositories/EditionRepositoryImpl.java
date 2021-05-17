@@ -60,7 +60,17 @@ public class EditionRepositoryImpl implements EditionRepository{
     }
 
     @Override
-    public void editEdition(Integer id, String description, Date relaseYear, Integer book_Id) {
+    public void editEdition(Integer id, String description, String relaseYear, Integer book_Id) {
+        Edition edition = entityManager.find(Edition.class, id);
+        if(edition != null) {
+            try {
+                entityManager.getTransaction().begin();
+                edition.setDescription(description);
+                edition.setReleaseYear(relaseYear);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
 
+            }
+        }
     }
 }

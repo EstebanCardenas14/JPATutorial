@@ -17,9 +17,7 @@ public class AuthorService {
 
     AuthorRepository authorRepository;
 
-    public List<AuthorPOJO> listAuthors() {
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+    public List<AuthorPOJO> listAuthors() {EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         authorRepository = new AuthorRepositoryImpl(entityManager);

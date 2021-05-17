@@ -14,7 +14,7 @@
 
 <form action="./edit-Book">
 
-  <input type="hidden" id="authorId" name="authorId" value ="<%= request.getParameter("authorId") %>">
+  <input type="hidden" id="bookId" name="bookId" value ="<%= request.getParameter("bookId") %>">
 
   Book title: <input type="text" id="title" name="title">
   <br />

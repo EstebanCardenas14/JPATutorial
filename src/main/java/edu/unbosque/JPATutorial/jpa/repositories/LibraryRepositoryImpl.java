@@ -1,6 +1,5 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.Library;
 
 import javax.persistence.EntityManager;
@@ -33,4 +32,40 @@ public class LibraryRepositoryImpl implements LibraryRepository {
         return Optional.empty();
     }
 
+    @Override
+    public void deleteById(Integer id){
+        Library library = entityManager.find(Library.class ,id);
+        if (library != null) {
+            try {
+
+                entityManager.getTransaction().begin();
+
+                entityManager.remove(library);
+                entityManager.getTransaction().commit();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void editLibrary(Integer id, String name) {
+        Library library = entityManager.find(Library.class ,id);
+        if(library != null) {
+            try {
+                entityManager.getTransaction().begin();
+                library.setName(name);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
+                   e.printStackTrace();
+            }
+        }
+    }
+
 }
+
+
+
+
+

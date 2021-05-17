@@ -6,6 +6,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Library") // Optional
+@NamedQueries({
+        @NamedQuery(name = "Library.findAll",
+                query = "SELECT b FROM Library b")
+})
 public class Library {
 
     @Id
