@@ -32,6 +32,7 @@ public class AuthorService {
         for (Author author : authors) {
             authorsPOJO.add(new AuthorPOJO(author.getAuthorId(), author.getName(), author.getBooks().size(), author.getCountry()));
         }
+
         return authorsPOJO;
 
     }

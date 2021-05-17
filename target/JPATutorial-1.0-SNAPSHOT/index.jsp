@@ -71,7 +71,7 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
-
+                console.log(data)
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
 
                 data.map(d => {
@@ -122,35 +122,28 @@
                         var action = document.createElement('button');
                         action.setAttribute('onclick', 'location.href="./form-viewbook.jsp?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('Edit author');
-                        if (actions.includes('edit-book')) {
-                            var cell = newRow.insertCell();
-                            var action = document.createElement('button');
-                            action.setAttribute('onclick', 'location.href="./edit-book.jsp?authorId=' + d['authorId'] + '";');
-                            var text = document.createTextNode('Edit book');
+                    }
+                    if (actions.includes('edit-book')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-book.jsp?authorId=' + d['authorId'] + '";');
+                        var text = document.createTextNode('Edit book');
 
-                            action.appendChild(text);
-                            cell.appendChild(action);
-                        }
-
+                        action.appendChild(text);
+                        cell.appendChild(action);
                     }
                 });
-
             }
         }
         xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
         xhr.send(null);
-
     }
-
     // Printing libraries
     printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
-
     // Printing authors
-    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book', 'edit-author', 'delete-author', 'edit-book']);
-
-
+    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author']);
     // Printing customer
-    printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender', 'age'], actions = ['create-rent', 'edit-customer', 'delete-customer']);
+    printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
 
 </script>
 
