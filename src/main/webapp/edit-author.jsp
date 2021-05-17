@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="./edit-author">
-    Author id: <input type="hidden" id="authorId" name="authorId" value ="<%= request.getParameter("authorId") %>">
+    <input type="hidden" id="authorId" name="authorId" value ="<%= request.getParameter("authorId") %>">
     Author name: <input type="text" id="name" name="name">
     Author country: <input type="text" id="country" name="country">
     <input type="submit" value="Edit Author!">

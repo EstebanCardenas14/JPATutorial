@@ -117,11 +117,19 @@
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
+<<<<<<< HEAD
                             if (actions.includes('view-books')){
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
                                 action.setAttribute('onclick', 'location.href="./form-viewbook.jsp?authorId=' + d['authorId'] + '";');
                                 var text = document.createTextNode('Edit author');
+=======
+                            if (actions.includes('edit-book')){
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./edit-book.jsp?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Edit book');
+>>>>>>> 34ae7cdcacafc2b67bfdeee6242380bd661fb84e
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
@@ -139,7 +147,11 @@
             printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
 
             // Printing authors
+<<<<<<< HEAD
             printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','View Books']);
+=======
+            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','edit-book']);
+>>>>>>> 34ae7cdcacafc2b67bfdeee6242380bd661fb84e
 
             // Printing customer
             printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);

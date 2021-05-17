@@ -12,22 +12,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewBookService {
-    public List<ViewBookPOJO> listViewBook() {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        authorRepository = new AuthorRepositoryImpl(entityManager);
-        List<Author> authors = authorRepository.findAll();
-
-        entityManager.close();
-        entityManagerFactory.close();
-
-        List<AuthorPOJO> authorsPOJO = new ArrayList<>();
-        for (Author author : authors) {
-            authorsPOJO.add(new AuthorPOJO(author.getAuthorId(), author.getName(), author.getBooks().size(), author.getCountry()));
-        }
-        return authorsPOJO;
-
-    }
 }
