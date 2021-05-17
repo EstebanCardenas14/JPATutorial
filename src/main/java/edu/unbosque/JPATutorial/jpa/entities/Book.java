@@ -2,6 +2,7 @@ package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -98,5 +99,6 @@ public class Book {
           editions.add(edition);
           edition.setBook(this);
      }
+
 
 }

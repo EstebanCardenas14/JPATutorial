@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface RentRepository {
 
-    Optional<Rent> findByEmail(String email);
+    Optional<Rent> findById(String id);
 
     Optional<Rent> findByDate(Date renting_Date);
 
@@ -17,5 +17,9 @@ public interface RentRepository {
     List<Rent> findAll();
 
     Optional<Rent> save(Rent rent);
+
+    void deleteById(Integer Id);
+
+    void editRent(Integer id, String email, Integer edition_Id, Date renting_date);
 
 }

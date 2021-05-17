@@ -17,8 +17,8 @@ public class RentRepositoryImpl implements RentRepository{
     }
 
     @Override
-    public Optional<Rent> findByEmail(String email) {
-        Rent rent = entityManager.find(Rent.class, email);
+    public Optional<Rent> findById(String id) {
+        Rent rent = entityManager.find(Rent.class, id);
         return rent != null ? Optional.of(rent) : Optional.empty();
     }
 
@@ -53,5 +53,25 @@ public class RentRepositoryImpl implements RentRepository{
             e.printStackTrace();
         }
         return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(Integer Id) {
+        Rent rent = entityManager.find(Rent.class, Id);
+        if(rent != null){
+            try {
+                entityManager.getTransaction().begin();
+                entityManager.remove(rent);
+                entityManager.getTransaction().commit();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void editRent(Integer id, String email, Integer edition_Id, Date renting_date) {
+
     }
 }
