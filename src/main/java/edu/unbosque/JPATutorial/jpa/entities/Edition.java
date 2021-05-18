@@ -1,12 +1,10 @@
 package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
-@Table(name = "Edition") // Optional
+@Table(name = "EditionService") // Optional
 @NamedQueries({
         @NamedQuery(name = "Edition.findAll",
                 query = "SELECT b FROM Edition b")
@@ -22,18 +20,23 @@ public class Edition {
     private String description;
 
     @Column(name = "release_year")
+    @Temporal(TemporalType.DATE)
     private Date releaseYear;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+    @OneToMany(mappedBy = "edition", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Rent> rents = new ArrayList<>();
 
     // FetchType.EAGER: When we retrieve a Library, we'll also automatically retrieve all of its corresponding Editions
     // CascadeType.PERSIST: When we save a superhero, its movies will also be saved
     @ManyToMany(mappedBy = "editions", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Library> libraries = new HashSet<>();
 
-    public Edition() {}
+    public Edition() {
+    }
 
     public Edition(String description, Date releaseYear) {
         this.description = description;
@@ -87,4 +90,12 @@ public class Edition {
         library.getEditions().add(this);
     }
 
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void addRents(Rent rent) {
+        rents.add(rent);
+        rent.setEdition(this);
+    }
 }

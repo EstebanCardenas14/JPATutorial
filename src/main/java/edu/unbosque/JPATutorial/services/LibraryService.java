@@ -3,7 +3,6 @@ package edu.unbosque.JPATutorial.services;
 import edu.unbosque.JPATutorial.jpa.entities.Library;
 import edu.unbosque.JPATutorial.jpa.repositories.LibraryRepository;
 import edu.unbosque.JPATutorial.jpa.repositories.LibraryRepositoryImpl;
-
 import edu.unbosque.JPATutorial.servlets.pojos.LibraryPOJO;
 
 import javax.ejb.Stateless;
@@ -56,6 +55,29 @@ public class LibraryService {
 
         return;
 
+    }
+
+    public void editLibrary(Integer id, String name){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        libraryRepository = new LibraryRepositoryImpl(entityManager);
+        libraryRepository.editLibrary(id, name);
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+    }
+
+    public void deleteLibrary (Integer id){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        libraryRepository = new LibraryRepositoryImpl(entityManager);
+        libraryRepository.deleteById(id);
+
+        entityManager.close();
+        entityManagerFactory.close();
     }
 
 }

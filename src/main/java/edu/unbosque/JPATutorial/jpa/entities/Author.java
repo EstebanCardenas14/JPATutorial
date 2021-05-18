@@ -9,6 +9,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Author.findByName",
                 query = "SELECT a FROM Author a WHERE a.name = :name")
+
 })
 public class Author {
 

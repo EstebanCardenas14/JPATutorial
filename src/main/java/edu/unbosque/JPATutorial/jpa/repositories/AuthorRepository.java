@@ -15,4 +15,6 @@ public interface AuthorRepository {
 
     void deleteById(Integer id);
 
+    void editAuthor (int id,String name, String country);
+
 }

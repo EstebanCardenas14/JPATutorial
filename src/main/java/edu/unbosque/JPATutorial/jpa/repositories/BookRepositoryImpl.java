@@ -49,4 +49,42 @@ public class BookRepositoryImpl implements BookRepository {
         return Optional.empty();
     }
 
+    @Override
+    public void deleteById(Integer id) {
+    Book book = entityManager.find(Book.class, id);
+    if(book != null){
+        try {
+
+            entityManager.getTransaction().begin();
+
+            book.getEditions().forEach(edition -> {
+                entityManager.remove(edition);
+            });
+
+            entityManager.remove(book);
+            entityManager.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
+    @Override
+    public void editBook(Integer id, String Title, String isbn, Integer author_Id, String genre) {
+
+        Book book = entityManager.find(Book.class, id);
+        if(book != null) {
+            try {
+                entityManager.getTransaction().begin();
+                book.setTitle(Title);
+                book.setIsbn(isbn);
+                book.setGenre(genre);
+                entityManager.getTransaction().commit();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
