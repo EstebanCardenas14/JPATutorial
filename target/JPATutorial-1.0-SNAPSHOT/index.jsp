@@ -97,28 +97,12 @@
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
-                    if (actions.includes('delete-customer')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./delete-customer?email=' + d['email'] + '";');
-                        var text = document.createTextNode('Delete customer');
-                        action.appendChild(text);
-                        cell.appendChild(action);
-                    }
 
                     if (actions.includes('edit-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
                         action.setAttribute('onclick', 'location.href="./edit-author.jsp?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('Edit author');
-                        action.appendChild(text);
-                        cell.appendChild(action);
-                    }
-                    if (actions.includes('edit-book')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-book.jsp?bookId=' + d['bookId'] + '";');
-                        var text = document.createTextNode('Edit book');
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
@@ -133,6 +117,26 @@
                     }
 
 
+                    if (actions.includes('delete-customer')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./delete-customer?email=' + d['email'] + '";');
+                        var text = document.createTextNode('Delete customer');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+                    }
+
+                    if (actions.includes('edit-customer')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./edit-customer.jsp?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Edit Customer');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+
+
                     if (actions.includes('delete-library')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -140,7 +144,6 @@
                         var text = document.createTextNode('Delete Library');
                         action.appendChild(text);
                         cell.appendChild(action);
-
                     }
 
                     if (actions.includes('edit-library')) {
@@ -153,15 +156,7 @@
 
                     }
 
-                    if (actions.includes('edit-customer')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-customer.jsp?libraryId=' + d['libraryId'] + '";');
-                        var text = document.createTextNode('Edit Customer');
-                        action.appendChild(text);
-                        cell.appendChild(action);
 
-                    }
                 });
             }
         }

@@ -15,23 +15,24 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Genre</th>
-        <th>ISBN</th>
         <th>title</th>
+        <th>ISBN</th>
         <th>author_id</th>
+        <th>Genre</th>
         <th>acciones</th>
     </tr>
     </thead>
     <tbody>
     </tbody>
+
 </table>
 <h3>View of edition book</h3>
 <table id="editionBookTbl">
     <thead>
     <tr>
-        <th>Title</th>
-        <th>ISBN</th>
-        <th>Genre</th>
+        <th>Description</th>
+        <th>Relase_Year</th>
+        <th>book_id</th>
         <th>Acciones</th>
     </tr>
     </thead>
@@ -75,21 +76,27 @@
                         cell.appendChild(action);
                     }
 
-                    if (actions.includes('edition-book')) {
+                    if (actions.includes('delete-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-edition.jsp?bookId=' + d['bookId'] + '";');
-                        var text = document.createTextNode('Edit book');
+                        action.setAttribute('onclick', 'location.href="./delete-book?bookId=' + d['bookId'] + '";');
+                        var text = document.createTextNode('Delete book');
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
 
 
-                })
+                });
             }
         }
+        xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
+        xhr.send(null);
     }
-    printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['bookId', 'genre','isbn_number','title','author_id'], actions = ['edition-book','delete-book','edit-book']);
+
+
+    printTable(elementId ='viewBookTbl', servlet = 'list-viewBooks', columns = ['bookId', 'title','isbn_number','author_id','genre'], actions = ['edition-book','delete-book','edit-book']);
+
+    printTable(elementId ='editionBookTbl', servlet = 'list-edition', columns = ['Description', 'Relase_Year','book_id'], actions = []);
 
 </script>
 </body>

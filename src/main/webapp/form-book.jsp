@@ -7,6 +7,7 @@
 <body>
 
 <form action="./create-book">
+    <input type="hidden" id="bookId" name="bookId" value ="<%= request.getParameter("bookId") %>">
     <input type="hidden" id="authorId" name="authorId" value ="<%= request.getParameter("authorId") %>">
     Book title: <input type="text" id="title" name="title">
     <br />

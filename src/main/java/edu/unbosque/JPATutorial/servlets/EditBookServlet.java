@@ -23,7 +23,7 @@ public class EditBookServlet extends HttpServlet {
 
 
         BookService bookService = new BookService();
-       bookService.editBook(bookId,title,isbn,authorId-1,genre);
+       bookService.editBook(bookId,title,isbn,authorId,genre);
         System.out.println("toca cambiar el primer authorid"+ title);
 
         response.sendRedirect("./index.jsp");
