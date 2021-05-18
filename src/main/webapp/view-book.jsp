@@ -49,14 +49,15 @@
                 var data = JSON.parse(xhr.responseText);
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
                 data.map(d => {
-                    var newRow = tbodyRef.insertRow();
+                    //Este if se encarga de verificar que los libros corresponden al autor
+                    if((<%= request.getParameter("authorId") %>)==d['author_id']) {
+                        var newRow = tbodyRef.insertRow();
+                        columns.map(c => {
+                            var cell = newRow.insertCell();
+                            var text = document.createTextNode(d[c]);
+                            cell.appendChild(text);
 
-                    columns.map(c => {
-                        var cell = newRow.insertCell();
-                        var text = document.createTextNode(d[c]);
-                        cell.appendChild(text);
-                    });
-
+                        });
                     if (actions.includes('edition-book')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -85,16 +86,14 @@
                         cell.appendChild(action);
                     }
 
-
+                    }
                 });
             }
         }
         xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
         xhr.send(null);
     }
-
-
-    printTable(elementId ='viewBookTbl', servlet = 'list-viewBooks', columns = ['bookId', 'title','isbn_number','author_id','genre'], actions = ['edition-book','delete-book','edit-book']);
+    printTable(elementId ='viewBookTbl', servlet = 'list-viewBooks', columns = ['book_id', 'title','isbn_number','author_id','genre'], actions = ['edition-book','delete-book','edit-book']);
 
     printTable(elementId ='editionBookTbl', servlet = 'list-edition', columns = ['Description', 'Relase_Year','book_id'], actions = []);
 

@@ -110,7 +110,7 @@
                     if (actions.includes('view-books')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./view-book.jsp?bookId=' + d['bookId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./view-book.jsp?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('View book');
                         action.appendChild(text);
                         cell.appendChild(action);

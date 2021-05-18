@@ -24,7 +24,8 @@ public class ListViewBooksServlet extends HttpServlet {
         List<BookPOJO> books =  bookService.listBooks();
 
         String booksJSONString = new Gson().toJson(books);
-        System.out.println("LIBROOOOOOOOOS "+booksJSONString);
+
+
         PrintWriter out = response.getWriter();
         out.print(booksJSONString);
         out.flush();
