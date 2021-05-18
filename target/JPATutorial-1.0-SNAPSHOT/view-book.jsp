@@ -49,11 +49,10 @@
                 var data = JSON.parse(xhr.responseText);
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
                 data.map(d => {
+                    //Este if se encarga de verificar que los libros corresponden al autor
                     if((<%= request.getParameter("authorId") %>)==d['author_id']) {
                         var newRow = tbodyRef.insertRow();
-
                         columns.map(c => {
-
                             var cell = newRow.insertCell();
                             var text = document.createTextNode(d[c]);
                             cell.appendChild(text);
@@ -88,7 +87,6 @@
                     }
 
                     }
-
                 });
             }
         }
