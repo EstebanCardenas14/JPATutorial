@@ -92,6 +92,7 @@
                     if (actions.includes('delete-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
+                        console.log("zxedcfvghbjnkm")
                         action.setAttribute('onclick', 'location.href="./delete-author?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('Delete author');
                         action.appendChild(text);
