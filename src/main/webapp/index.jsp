@@ -4,65 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <title>JSP Tutorial</title>
-
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="./CSS/css.css">
 </head>
 <body>
 
-<h1>Library Manager</h1>
+<br><br><br>
+<h1>Biblioteca - Taller 5 <img src="https://img-premium.flaticon.com/png/512/1946/1946079.png?token=exp=1621376787~hmac=b1ace130041d9954dc9bffe314ea223d" width="40px" height="40px"></h1>
+<p class="subtitulo">Grupo : Syntax Error</p>
+<br><br><br>
 
 <button onclick="location.href='./form-library.jsp';">Create library</button>
 <button onclick="location.href='./form-author.jsp';">Create author</button>
 <button onclick="location.href='./form-customer.jsp';">Create customer</button>
 
-<h3>Libraries</h3>
+<div class="containerTablas">
 
-<table id="librariesTbl">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
 
-<h3>Authors</h3>
+    <h3 class="subtitulos">Libraries</h3>
 
-<table id="authorsTbl">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Country</th>
-        <th># Books</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-<h3>Customers</h3>
+    <table id="librariesTbl">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <br><br>
+    <h3 class="subtitulos">Authors</h3>
 
-<table id="customersTbl">
-    <thead>
-    <tr>
-        <th>Email</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+    <table id="authorsTbl">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th># Books</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <br><br>
+    <h3 class="subtitulos">Customers</h3>
+
+    <table id="customersTbl">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
+
 <script>
 
     function printTable(elementId, servlet, columns, actions = []) {
@@ -163,12 +169,13 @@
         xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
         xhr.send(null);
     }
+
     // Printing libraries
     printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
     // Printing authors
-    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','view-books']);
+    printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book', 'edit-author', 'delete-author', 'view-books']);
     // Printing customer
-    printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
+    printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender', 'age'], actions = ['create-rent', 'edit-customer', 'delete-customer']);
 </script>
 
 </body>
