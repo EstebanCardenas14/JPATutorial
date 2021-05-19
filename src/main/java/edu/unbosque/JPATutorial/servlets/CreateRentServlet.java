@@ -24,6 +24,7 @@ public class CreateRentServlet extends HttpServlet {
 
         RentService rentService = new RentService();
         rentService.saveRent(email, date2, id_edition);
+        System.out.println("que pex" + email + date2 +id_edition);
 
         response.sendRedirect("./index.jsp");
     }
