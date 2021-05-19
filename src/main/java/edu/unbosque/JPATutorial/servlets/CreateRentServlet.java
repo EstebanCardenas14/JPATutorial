@@ -26,6 +26,9 @@ public class CreateRentServlet extends HttpServlet {
         RentService rentService = new RentService();
 
         String email = request.getParameter("email");
+        String book = request.getParameter("books_view");
+
+
 
 
 

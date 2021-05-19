@@ -16,7 +16,6 @@
     var dataBook = document.getElementById("books_view");
     var databookOption = document.createElement('option');
     var data = JSON.parse(xhr.responseText);
-
 </script>
 </body>
 </html>
