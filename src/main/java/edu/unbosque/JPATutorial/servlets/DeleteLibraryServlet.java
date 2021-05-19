@@ -15,6 +15,7 @@ public class DeleteLibraryServlet extends HttpServlet {
 
         response.setContentType("text/html");
         Integer libraryId = Integer.parseInt(request.getParameter("libraryId"));
+        System.out.println("aca esta mira " + libraryId);
         LibraryService libraryService = new LibraryService();
         libraryService.deleteLibrary(libraryId);
         response.sendRedirect("./index.jsp");

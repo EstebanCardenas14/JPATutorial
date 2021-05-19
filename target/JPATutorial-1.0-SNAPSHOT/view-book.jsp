@@ -24,20 +24,6 @@
     </thead>
     <tbody>
     </tbody>
-
-</table>
-<h3>View of edition book</h3>
-<table id="editionBookTbl">
-    <thead>
-    <tr>
-        <th>Description</th>
-        <th>Relase_Year</th>
-        <th>book_id</th>
-        <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
 </table>
 <script>
 
@@ -61,7 +47,7 @@
                         if (actions.includes('edition-book')) {
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
-                            action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['authorId'] + '";');
+                            action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['author-id'] + '";');
                             var text = document.createTextNode('Edition book');
                             action.appendChild(text);
                             cell.appendChild(action);
@@ -85,6 +71,15 @@
                             action.appendChild(text);
                             cell.appendChild(action);
                         }
+
+                        if (actions.includes('view-edition')) {
+                            var cell = newRow.insertCell();
+                            var action = document.createElement('button');
+                            action.setAttribute('onclick', 'location.href="./asso-library.jsp?bookID=' + d['book_id']+'&aso=false'+ '";');
+                            var text = document.createTextNode('View Editions');
+                            action.appendChild(text);
+                            cell.appendChild(action);
+                        }
                     }
                 });
             }
@@ -92,11 +87,7 @@
         xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
         xhr.send(null);
     }
-
-    printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['book_id', 'title', 'isbn_number', 'author_id', 'genre'], actions = ['edition-book', 'delete-book', 'edit-book']);
-
-    printTable(elementId = 'editionBookTbl', servlet = 'list-edition', columns = ['Description', 'Relase_Year', 'book_id'], actions = []);
-
+    printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['book_id', 'title', 'isbn_number', 'author_id', 'genre'], actions = ['view-edition','edition-book', 'delete-book', 'edit-book']);
 </script>
 </body>
 </html>

@@ -71,4 +71,14 @@ public class EditionService {
         entityManagerFactory.close();
     }
 
+    public void deleteEdition(Integer editionID){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        editionRepository.deleteById(editionID);
+
+        entityManager.close();
+        entityManagerFactory.close();
+    }
 }

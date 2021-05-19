@@ -1,5 +1,6 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
+import edu.unbosque.JPATutorial.jpa.entities.Edition;
 import edu.unbosque.JPATutorial.jpa.entities.Library;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,12 @@ public class LibraryRepositoryImpl implements LibraryRepository {
 
     public LibraryRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+    @Override
+    public Optional<Library> findById(Integer library_Id) {
+        Library library = entityManager.find(Library.class, library_Id);
+        return library != null ? Optional.of(library) : Optional.empty();
     }
 
     @Override

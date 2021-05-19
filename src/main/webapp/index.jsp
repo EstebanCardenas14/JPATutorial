@@ -109,7 +109,7 @@
                     if (actions.includes('view-books')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./view-book.jsp?authorId=' + d['authorId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./view-book.jsp?authorId=' + d['authorId']+ '";');
                         var text = document.createTextNode('View book');
                         action.appendChild(text);
                         cell.appendChild(action);
@@ -154,6 +154,25 @@
                         cell.appendChild(action);
 
                     }
+                    if (actions.includes('associate-edition')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['library_id'] +'&assosingLibIntro=true'+ '";');
+                        var text = document.createTextNode('Associate Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+                    if (actions.includes('disassociate-edition')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        console.log(d['librarId']);
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['librarId'] +'&aso=true'+'";');
+                        var text = document.createTextNode('Disassociate Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
 
 
                 });
@@ -163,7 +182,7 @@
         xhr.send(null);
     }
     // Printing libraries
-    printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
+    printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library','associate-edition','disassociate-edition']);
     // Printing authors
     printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','view-books']);
     // Printing customer
