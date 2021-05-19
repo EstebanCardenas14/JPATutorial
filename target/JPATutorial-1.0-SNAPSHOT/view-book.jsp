@@ -61,7 +61,7 @@
                         if (actions.includes('edition-book')) {
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
-                            action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['authorId'] + '";');
+                            action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['author-id'] + '";');
                             var text = document.createTextNode('Edition book');
                             action.appendChild(text);
                             cell.appendChild(action);
