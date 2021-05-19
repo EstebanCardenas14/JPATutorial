@@ -14,13 +14,9 @@ public class DeleteAuthorServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html");
-        System.out.println("Author id");
         Integer authorid = Integer.parseInt(request.getParameter("authorId"));
-
-        System.out.println(authorid+"Author id");
         AuthorService authorService = new AuthorService();
         authorService.deleteAuthor(authorid);
-
         response.sendRedirect("./index.jsp");
     }
 

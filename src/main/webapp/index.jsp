@@ -71,7 +71,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
-                console.log(data)
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
                 data.map(d => {
                     var newRow = tbodyRef.insertRow();
@@ -92,7 +91,6 @@
                     if (actions.includes('delete-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        console.log("zxedcfvghbjnkm")
                         action.setAttribute('onclick', 'location.href="./delete-author?authorId=' + d['authorId'] + '";');
                         var text = document.createTextNode('Delete author');
                         action.appendChild(text);
@@ -150,7 +148,7 @@
                     if (actions.includes('edit-library')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['libraryId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['librarId'] + '";');
                         var text = document.createTextNode('Edit Library');
                         action.appendChild(text);
                         cell.appendChild(action);

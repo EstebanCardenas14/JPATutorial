@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "listLibrariesServlet", value = "/list-edition")
+@WebServlet(name = "listEditionServlet", value = "/list-edition")
 public class ListEditionServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
