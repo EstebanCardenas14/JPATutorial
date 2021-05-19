@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface LibraryRepository {
 
+    Optional<Library> findById(Integer id);
+
     List<Library> findAll();
 
     Optional<Library> save(Library library);

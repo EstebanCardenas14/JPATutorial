@@ -17,4 +17,8 @@ public interface EditionRepository {
     void deleteById(Integer id);
 
     void editEdition(Integer id, String description, Date relaseYear, Integer book_Id);
+
+    void associate(Integer libraryID,Integer editionID);
+
+    void disassociate(Integer libraryID,Integer editionID);
 }

@@ -6,6 +6,7 @@ import edu.unbosque.JPATutorial.services.LibraryService;
 import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 import edu.unbosque.JPATutorial.servlets.pojos.LibraryPOJO;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

@@ -1,6 +1,7 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
+import edu.unbosque.JPATutorial.jpa.entities.Library;
 
 import javax.persistence.EntityManager;
 import java.util.Date;
@@ -40,6 +41,7 @@ public class EditionRepositoryImpl implements EditionRepository{
     @Override
     public void deleteById(Integer id) {
     Edition edition = entityManager.find(Edition.class, id);
+
             if(edition != null){
                 try {
 
@@ -69,6 +71,38 @@ public class EditionRepositoryImpl implements EditionRepository{
                 edition.setReleaseYear(relaseYear);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
+
+            }
+        }
+    }
+
+    @Override
+    public void associate(Integer libraryID,Integer editionID) {
+        Edition edition = entityManager.find(Edition.class, editionID);
+        Library library = entityManager.find(Library.class,libraryID);
+
+        if(edition != null && library != null){
+            try {
+                entityManager.getTransaction().begin();
+                edition.addLibrary(library);
+                entityManager.getTransaction().commit();
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+    @Override
+    public void disassociate(Integer libraryID,Integer editionID) {
+        Edition edition = entityManager.find(Edition.class, editionID);
+        Library library = entityManager.find(Library.class,libraryID);
+        if(edition != null && library != null){
+            try {
+                entityManager.getTransaction().begin();
+                edition.getLibraries().remove(library);
+                library.getEditions().remove(edition);
+                entityManager.getTransaction().commit();
+            }catch (Exception e){
 
             }
         }
