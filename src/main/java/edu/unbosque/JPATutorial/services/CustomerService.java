@@ -53,11 +53,6 @@ public class CustomerService {
         return persistedCustomer;
     }
 
-    public void editCustomer(){
-
-    }
-
-
     public void deleteCustomer(String email){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
