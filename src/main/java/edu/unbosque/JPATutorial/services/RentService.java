@@ -72,5 +72,20 @@ public class RentService {
         entityManagerFactory.close();
     }
 
+    public List<RentPOJO> rangeDateRent(Date startDate, Date endDate, String email){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        customerRepository = new CustomerRepositoryImpl(entityManager);
+        rentRepository = new RentRepositoryImpl(entityManager);
+
+        List<Rent> rents = rentRepository.findByDateAndEmail(startDate, endDate,email);
+
+        List<RentPOJO> rentPOJOS = new ArrayList<>();
+        for (Rent rent : rents){
+            rentPOJOS.add(new RentPOJO(rent.getRent_id(), rent.getCustomer().getEmail(),rent.getEdition().getEditionId(),rent.getRenting_Date()));
+        }
+        return rentPOJOS;
+    }
 
 }
