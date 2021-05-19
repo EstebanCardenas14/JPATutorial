@@ -14,6 +14,7 @@
 <table id="editionBookTbl">
     <thead>
     <tr>
+        <th>Id</th>
         <th>Description</th>
         <th>Release_Year</th>
         <th>book_id</th>
@@ -25,6 +26,7 @@
 </table>
 <script>
     function printTable(elementId, servlet, columns, actions = []) {
+        console.log()
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
@@ -89,7 +91,7 @@
         xhr.open('GET', '${pageContext.request.contextPath}/' + servlet, true);
         xhr.send(null);
     }
-    printTable(elementId = 'editionBookTbl', servlet = 'list-edition', columns = ['description', 'release_year', 'book_id'], actions = ['delete-edition','associate','disassociate']);
+    printTable(elementId = 'editionBookTbl', servlet = 'list-edition', columns = ['edition_Id','description', 'release_year', 'book_id'], actions = ['delete-edition','associate','disassociate']);
 </script>
 </body>
 </html>

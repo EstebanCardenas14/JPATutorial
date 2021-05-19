@@ -135,6 +135,16 @@
 
                     }
 
+                    if (actions.includes('create-rent')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./form-rent.jsp?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Create Rent');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+
 
                     if (actions.includes('delete-library')) {
                         var cell = newRow.insertCell();
@@ -166,6 +176,7 @@
                     if (actions.includes('disassociate-edition')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
+                        console.log(d['librarId']);
                         action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['librarId'] +'&aso=true'+'";');
                         var text = document.createTextNode('Disassociate Library');
                         action.appendChild(text);

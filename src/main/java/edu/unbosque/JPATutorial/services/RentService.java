@@ -1,13 +1,7 @@
 package edu.unbosque.JPATutorial.services;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
-import edu.unbosque.JPATutorial.jpa.entities.Book;
-import edu.unbosque.JPATutorial.jpa.entities.Customer;
-import edu.unbosque.JPATutorial.jpa.entities.Rent;
-import edu.unbosque.JPATutorial.jpa.repositories.CustomerRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.CustomerRepositoryImpl;
-import edu.unbosque.JPATutorial.jpa.repositories.RentRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.RentRepositoryImpl;
+import edu.unbosque.JPATutorial.jpa.entities.*;
+import edu.unbosque.JPATutorial.jpa.repositories.*;
 import edu.unbosque.JPATutorial.servlets.pojos.RentPOJO;
 
 import javax.ejb.Stateless;
@@ -23,23 +17,33 @@ public class RentService {
 
     CustomerRepository customerRepository;
     RentRepository rentRepository;
+    EditionRepository editionRepository;
 
-    public void saveRent(String email, Date renting_Date){
+    public void saveRent(String email, Date renting_Date,Integer edition_id){
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         customerRepository = new CustomerRepositoryImpl(entityManager);
         rentRepository = new RentRepositoryImpl(entityManager);
-
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        Rent rent = new Rent(renting_Date);
         Optional<Customer> customer = customerRepository.findByEmail(email);
-        customer.ifPresent(a -> {
-            a.addRents(new Rent(renting_Date));
-            customerRepository.save(a);
-        });
+
+     customer.ifPresent(c -> {
+         c.addRents(rent );
+         customerRepository.save(c);
+     });
+     Optional<Edition> edition = editionRepository.findById(edition_id);
+       edition.ifPresent(d ->{
+           d.addRents(rent);
+           editionRepository.save(d);
+
+       });
 
         entityManager.close();
         entityManagerFactory.close();
+
 
 
     }
