@@ -8,8 +8,23 @@ button {
     border-radius: 10px;
 }
 
+.btn {
+    width: 120px;
+    height: 25px;
+    border: none;
+    color: white;
+    background-color: #636e72;
+    border-radius: 10px;
+}
+
 h1 {
     font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.titulo {
+    font-family: 'Lato', sans-serif !important;
     text-align: center;
     color: white;
 }
@@ -101,6 +116,7 @@ thead th {
     background-color: #e6e6e6d0;
 }
 
+
 /*libraries*/
 
 #librariesTbl {
@@ -126,4 +142,14 @@ thead th {
 
 #librariesTbl tr {
     background-color: #e6e6e6d0;
+}
+
+.formulario_1 {
+    margin: auto;
+    padding: 25px;
+    margin-top: 30px;
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
 }
