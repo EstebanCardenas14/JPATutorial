@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "EditBookServlet", value = "/edit-Book")
+@WebServlet(name = "editBookServlet", value = "/edit-book")
 public class EditBookServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -21,10 +21,8 @@ public class EditBookServlet extends HttpServlet {
         Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 
 
-
         BookService bookService = new BookService();
-       bookService.editBook(bookId,title,isbn,authorId,genre);
-        System.out.println("toca cambiar el primer authorid"+ title);
+        bookService.editBook(bookId,title,isbn,authorId,genre);
 
         response.sendRedirect("./index.jsp");
 

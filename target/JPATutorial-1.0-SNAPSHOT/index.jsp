@@ -71,7 +71,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
-                console.log(data)
                 var tbodyRef = document.getElementById(elementId).getElementsByTagName('tbody')[0];
                 data.map(d => {
                     var newRow = tbodyRef.insertRow();
@@ -110,7 +109,7 @@
                     if (actions.includes('view-books')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./view-book.jsp?authorId=' + d['authorId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./view-book.jsp?authorId=' + d['authorId']+ '";');
                         var text = document.createTextNode('View book');
                         action.appendChild(text);
                         cell.appendChild(action);
@@ -136,6 +135,16 @@
 
                     }
 
+                    if (actions.includes('create-rent')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./form-rent.jsp?libraryId=' + d['libraryId'] + '";');
+                        var text = document.createTextNode('Create Rent');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+
 
                     if (actions.includes('delete-library')) {
                         var cell = newRow.insertCell();
@@ -149,8 +158,27 @@
                     if (actions.includes('edit-library')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['libraryId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['librarId'] + '";');
                         var text = document.createTextNode('Edit Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+                    if (actions.includes('associate-edition')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['library_id'] +'&assosingLibIntro=true'+ '";');
+                        var text = document.createTextNode('Associate Library');
+                        action.appendChild(text);
+                        cell.appendChild(action);
+
+                    }
+                    if (actions.includes('disassociate-edition')) {
+                        var cell = newRow.insertCell();
+                        var action = document.createElement('button');
+                        console.log(d['librarId']);
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['librarId'] +'&aso=true'+'";');
+                        var text = document.createTextNode('Disassociate Library');
                         action.appendChild(text);
                         cell.appendChild(action);
 
@@ -164,7 +192,7 @@
         xhr.send(null);
     }
     // Printing libraries
-    printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library']);
+    printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions = ['delete-library', 'edit-library','associate-edition','disassociate-edition']);
     // Printing authors
     printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book','edit-author' ,'delete-author','view-books']);
     // Printing customer

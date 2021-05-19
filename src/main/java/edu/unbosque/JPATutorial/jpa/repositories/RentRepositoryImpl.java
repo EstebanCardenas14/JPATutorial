@@ -1,8 +1,10 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
+import edu.unbosque.JPATutorial.jpa.entities.Edition;
 import edu.unbosque.JPATutorial.jpa.entities.Rent;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class RentRepositoryImpl implements RentRepository{
         return rent != null ? Optional.of(rent) : Optional.empty();
     }
 
+
     @Override
     public Optional<Rent> findByDate(Date renting_Date) {
         Rent rent = entityManager.createNamedQuery("Rent.findByDate", Rent.class)
@@ -35,6 +38,20 @@ public class RentRepositoryImpl implements RentRepository{
         List <Rent> allRentsInDate;
         allRentsInDate = entityManager.createQuery("SELECT e FROM Rent e WHERE e.renting_Date BETWEEN :startDate AND :endDate order by e.renting_Date").getResultList();
         return allRentsInDate;
+    }
+
+    public List<Rent> findByEmail(String email) {
+        Query rentQ = entityManager.createQuery("SELECT c FROM Rent c WHERE c.customer.id = :email");
+        rentQ.setParameter("email",email);
+        List<Rent> rent =rentQ.getResultList();
+        return rent ;
+    }
+
+    public List<Rent> findByEdition(Integer editionId) {
+        Query rentQ = entityManager.createQuery("SELECT s FROM Rent s WHERE s.edition.id= :editionId ");
+        rentQ.setParameter("editionId",editionId);
+        List<Rent> rent =rentQ.getResultList();
+        return rent ;
     }
 
     @Override
