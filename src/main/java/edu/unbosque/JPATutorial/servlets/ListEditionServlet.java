@@ -6,6 +6,7 @@ import edu.unbosque.JPATutorial.services.LibraryService;
 import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 import edu.unbosque.JPATutorial.servlets.pojos.LibraryPOJO;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "listLibrariesServlet", value = "/list-edition")
+@WebServlet(name = "listEditionServlet", value = "/list-edition")
 public class ListEditionServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -27,7 +28,6 @@ public class ListEditionServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.print(editionsJsonString);
         out.flush();
-
     }
 
 }

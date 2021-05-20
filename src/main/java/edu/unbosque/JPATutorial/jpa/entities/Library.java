@@ -1,7 +1,9 @@
 package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,13 +24,14 @@ public class Library {
 
     // FetchType.EAGER: When we retrieve a Library, we'll also automatically retrieve all of its corresponding Editions
     // CascadeType.PERSIST: When we save a superhero, its movies will also be saved
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+
     @JoinTable(
             name = "Library_Edition",
             joinColumns = {@JoinColumn(name = "library_id")},
             inverseJoinColumns = {@JoinColumn(name = "edition_id")}
     )
-    private Set<Edition> editions = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<Edition> editions;
 
     public Library() { }
 
@@ -57,8 +60,14 @@ public class Library {
         this.name = name;
     }
 
-    public Set<Edition> getEditions() {
+    public List<Edition> getEditions() {
         return editions;
     }
 
+    public void addEdition(Edition edition){
+        if(this.editions == null){
+            this.editions = new ArrayList<>();
+        }
+        this.editions.add(edition);
+    }
 }

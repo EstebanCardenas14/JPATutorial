@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deleteAuthorServlet", value = "/delete-Library")
+@WebServlet(name = "deleteLibraryServlet", value = "/delete-Library")
 public class DeleteLibraryServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html");
-
         Integer libraryId = Integer.parseInt(request.getParameter("libraryId"));
-
+        System.out.println("aca esta mira " + libraryId);
         LibraryService libraryService = new LibraryService();
         libraryService.deleteLibrary(libraryId);
         response.sendRedirect("./index.jsp");

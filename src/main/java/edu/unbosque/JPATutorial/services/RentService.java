@@ -1,13 +1,7 @@
 package edu.unbosque.JPATutorial.services;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
-import edu.unbosque.JPATutorial.jpa.entities.Book;
-import edu.unbosque.JPATutorial.jpa.entities.Customer;
-import edu.unbosque.JPATutorial.jpa.entities.Rent;
-import edu.unbosque.JPATutorial.jpa.repositories.CustomerRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.CustomerRepositoryImpl;
-import edu.unbosque.JPATutorial.jpa.repositories.RentRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.RentRepositoryImpl;
+import edu.unbosque.JPATutorial.jpa.entities.*;
+import edu.unbosque.JPATutorial.jpa.repositories.*;
 import edu.unbosque.JPATutorial.servlets.pojos.RentPOJO;
 
 import javax.ejb.Stateless;
@@ -23,25 +17,31 @@ public class RentService {
 
     CustomerRepository customerRepository;
     RentRepository rentRepository;
+    EditionRepository editionRepository;
 
-    public void saveRent(String email, Date renting_Date){
+    public void saveRent(Date date,Integer id, String email){
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        customerRepository = new CustomerRepositoryImpl(entityManager);
         rentRepository = new RentRepositoryImpl(entityManager);
+        customerRepository = new CustomerRepositoryImpl(entityManager);
+        editionRepository = new EditionRepositoryImpl(entityManager);
 
-        Optional<Customer> customer = customerRepository.findByEmail(email);
+        Optional<Customer>customer = customerRepository.findByEmail(email);
         customer.ifPresent(a -> {
-            a.addRents(new Rent(renting_Date));
+            a.addRents(new Rent(date));
             customerRepository.save(a);
+        });
+
+        Optional<Edition>edition = editionRepository.findById(id);
+        edition.ifPresent(a -> {
+            a.addRents(new Rent(date));
+            editionRepository.save(a);
         });
 
         entityManager.close();
         entityManagerFactory.close();
-
-
     }
 
     public List<RentPOJO> listRent(){
@@ -54,11 +54,19 @@ public class RentService {
         entityManager.close();
         entityManagerFactory.close();
 
-        List<RentPOJO> rentPOJOS = new ArrayList<>();
-        for (Rent rent : rents){
-            rentPOJOS.add(new RentPOJO(rent.getRent_id(), rent.getCustomer().getEmail(),rent.getEdition().getEditionId(),rent.getRenting_Date()));
+        List<RentPOJO> rentPOJOList = new ArrayList<>();
+
+        for (Rent rent : rents) {
+
+                rentPOJOList.add(new RentPOJO(
+                        rent.getRent_id(),
+                        rent.getCustomer().getEmail(),
+                        rent.getEdition().getEditionId(),
+                        rent.getRenting_Date()));
+
+
         }
-        return rentPOJOS;
+        return rentPOJOList;
     }
 
     public void deleteRent(Integer rentId){
