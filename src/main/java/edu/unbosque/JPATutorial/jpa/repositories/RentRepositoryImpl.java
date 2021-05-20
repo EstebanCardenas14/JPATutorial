@@ -1,5 +1,6 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
+import edu.unbosque.JPATutorial.jpa.entities.Customer;
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
 import edu.unbosque.JPATutorial.jpa.entities.Rent;
 
@@ -66,6 +67,7 @@ public class RentRepositoryImpl implements RentRepository{
             entityManager.persist(rent);
             entityManager.getTransaction().commit();
             return Optional.of(rent);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

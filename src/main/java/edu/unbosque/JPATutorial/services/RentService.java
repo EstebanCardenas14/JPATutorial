@@ -19,39 +19,32 @@ public class RentService {
     RentRepository rentRepository;
     EditionRepository editionRepository;
 
-    public void saveRent(String email, Date renting_Date,Integer edition_id){
+    public void saveRent(Date date,Integer id, String email){
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        customerRepository = new CustomerRepositoryImpl(entityManager);
         rentRepository = new RentRepositoryImpl(entityManager);
+        customerRepository = new CustomerRepositoryImpl(entityManager);
         editionRepository = new EditionRepositoryImpl(entityManager);
 
-        Rent rent = new Rent(renting_Date);
-        Optional<Customer> customer = customerRepository.findByEmail(email);
-
-        if (!customer.isPresent())
-            System.out.println("El id del cliente ingresado no existe!");
-        Optional<Edition> edition = editionRepository.findById(edition_id);
-
-        if (!edition.isPresent())
-            System.out.println("El id del edición ingresado no existe!");
+        Optional<Customer>customer = customerRepository.findByEmail(email);
         customer.ifPresent(a -> {
-            a.addRents(rent);
+            a.addRents(new Rent(date));
             customerRepository.save(a);
         });
-        edition.ifPresent(e -> {
-            e.addRents(rent);
-            editionRepository.save(e);
+
+        Optional<Edition>edition = editionRepository.findById(id);
+        edition.ifPresent(a -> {
+            a.addRents(new Rent(date));
+            editionRepository.save(a);
         });
+
         entityManager.close();
         entityManagerFactory.close();
-        System.out.println("Se ha guardado exitosamente");
-
     }
 
-    public List<RentPOJO> listRent(String email){
+    public List<RentPOJO> listRent(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -64,13 +57,13 @@ public class RentService {
         List<RentPOJO> rentPOJOList = new ArrayList<>();
 
         for (Rent rent : rents) {
-            if (rent.getCustomer().getEmail().equals(email)) {
+
                 rentPOJOList.add(new RentPOJO(
                         rent.getRent_id(),
                         rent.getCustomer().getEmail(),
                         rent.getEdition().getEditionId(),
                         rent.getRenting_Date()));
-            }
+
 
         }
         return rentPOJOList;

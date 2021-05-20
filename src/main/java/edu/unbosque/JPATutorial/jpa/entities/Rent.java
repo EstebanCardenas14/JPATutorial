@@ -40,6 +40,8 @@ public class Rent {
         this.renting_Date = renting_Date;
     }
 
+
+
     public String getRent_id() {
         return rent_id;
     }
@@ -71,4 +73,8 @@ public class Rent {
     public void setRenting_Date(Date renting_Date) {
         this.renting_Date = renting_Date;
     }
+
+
+
+
 }

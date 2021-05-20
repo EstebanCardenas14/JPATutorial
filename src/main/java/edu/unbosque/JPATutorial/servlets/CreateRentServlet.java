@@ -23,8 +23,8 @@ public class CreateRentServlet extends HttpServlet {
         Date date2 = ParseFecha(request.getParameter("release_year"));
 
         RentService rentService = new RentService();
-        rentService.saveRent(email, date2, id_edition);
-        System.out.println("que pex" + email + date2 +id_edition);
+        rentService.saveRent(date2,id_edition,email);
+        System.out.println("que pex -->" + email +"  " + date2 + "  " +id_edition);
 
         response.sendRedirect("./index.jsp");
     }
