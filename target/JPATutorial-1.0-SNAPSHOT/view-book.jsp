@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./CSS/css.css">
     <title>JPA Tutorial</title>
     <style>
         table, th, td {
             border: 1px solid black;
+
         }
     </style>
 </head>
 <body>
-<h3>View of Book</h3>
+<br><br><br>
+<h1>View of Book ></h1>
+<p class="subtitulo">Grupo : Syntax Error</p>
+<br><br><br>
+<div class="containerTablas">
+
+<h3 class="subtitulos">>View of Book</h3>
 <table id="viewBookTbl">
     <thead>
     <tr>
@@ -89,5 +97,6 @@
     }
     printTable(elementId = 'viewBookTbl', servlet = 'list-viewBooks', columns = ['book_id', 'title', 'isbn_number', 'author_id', 'genre'], actions = ['view-edition','edition-book', 'delete-book', 'edit-book']);
 </script>
+</div>
 </body>
 </html>

@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+button {
+    width: 120px;
+    height: 25px;
+    border: none;
+    color: white;
+    background-color: #636e72;
+    border-radius: 10px;
+}
+.button-st {
+    text-align: center;
+}
+
+.btn {
+
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    color: white;
+    background-color: #636e72;
+    border-radius: 10px;
+    display: inline-block;
+}
+.btn-start {
+justify-content: center;
+    width: 130px;
+    height: 40px;
+    border: none;
+    color: white;
+    background-color: #636e72;
+    border-radius: 10px;
+    text-align: center;
+
+
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.titulo {
+    font-family: 'Lato', sans-serif !important;
+    text-align: center;
+    color: white;
+}
+
+body {
+    background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+}
+
+#authorsTbl {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#authorsTbl td,
+#authorsTbl th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+#authorsTbl tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#authorsTbl tr:hover {
+    background-color: #ddd;
+}
+
+#authorsTbl tr {
+    background-color: #e6e6e6d0;
+}
+
+
+thead th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #505CEE;
+    color: white;
+}
+
+.containerTablas {
+    padding: 10px 50px 50px 50px;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+
+.subtitulos {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: #505CEE;
+}
+
+.subtitulo {
+    font-family: 'Lato', sans-serif !important;
+    text-align: center;
+    color: white;
+    margin-top: -15px;
+}
+
+
+/*customers*/
+
+#customersTbl {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#customersTbl td,
+#customersTbl th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+#customersTbl tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customersTbl tr:hover {
+    background-color: #ddd;
+}
+
+#customersTbl tr {
+    background-color: #e6e6e6d0;
+}
+
+
+/*libraries*/
+
+#librariesTbl {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#librariesTbl td,
+#librariesTbl th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+#librariesTbl tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#librariesTbl tr:hover {
+    background-color: #ddd;
+}
+
+#librariesTbl tr {
+    background-color: #e6e6e6d0;
+}
+
+.formulario_1 {
+    margin: auto;
+    padding: 25px;
+    margin-top: 30px;
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+#viewBookTbl {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#viewBookTbl td,
+#viewBookTbl th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+#viewBookTbl tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#viewBookTbl tr:hover {
+    background-color: #ddd;
+}
+
+#viewBookTbl tr {
+    background-color: #e6e6e6d0;
+}
