@@ -27,7 +27,10 @@
         <th>ISBN</th>
         <th>author_id</th>
         <th>Genre</th>
-        <th>acciones</th>
+        <th>accion</th>
+        <th>accion</th>
+        <th>accion</th>
+        <th>accion</th>
     </tr>
     </thead>
     <tbody>

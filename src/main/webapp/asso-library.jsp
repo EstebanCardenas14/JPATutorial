@@ -35,7 +35,6 @@
                 data.map(d => {
                     //Este if se encarga de verificar que las ediciones al libro
                     if ((<%= request.getParameter("bookID") %>) == d['book_id']) {
-                        console.log(d['edition_Id'])
                         var newRow = tbodyRef.insertRow();
                         columns.map(c => {
                             var cell = newRow.insertCell();
@@ -45,9 +44,8 @@
                         if (actions.includes('delete-edition')) {
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
-                            console.log(d['edition_Id'])
                             action.setAttribute('onclick', 'location.href="./delete-edition?edition_id=' + d['edition_Id'] + '";');
-                            var text = document.createTextNode('Delete book');
+                            var text = document.createTextNode('Delete edition');
                             action.appendChild(text);
                             cell.appendChild(action);
                         }
@@ -63,9 +61,11 @@
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
                             var libraryID = (<%= request.getParameter("libraryId") %>);
-                            console.log("veamos en associate --> " + libraryID)
-                            action.setAttribute('onclick', 'location.href="./assos-edition?edition_id=' + d['edition_Id']+'&libraryId=' + libraryID+ '";');
-                            var text = document.createTextNode('segundo');
+                            action.onclick = function() {
+                                alert("Libro asociado a la librería.");
+                                location.href='./assos-edition?edition_id=' + d['edition_Id']+'&libraryId=' + libraryID;
+                            };
+                            var text = document.createTextNode('asociar');
                             action.appendChild(text);
                             cell.appendChild(action);
                         }
@@ -81,8 +81,11 @@
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
                             var libraryID = (<%= request.getParameter("libraryId") %>);
-                            action.setAttribute('onclick', 'location.href="./TERCERO-edition?edition_id=' + d['edition_Id'] +'&libraryId=' + libraryID+ '";');
-                            var text = document.createTextNode('tercero');
+                            action.onclick = function() {
+                                alert("Libro desasociado de la librería.");
+                                location.href='./TERCERO-edition?edition_id=' + d['edition_Id'] +'&libraryId=' + libraryID;
+                            };
+                            var text = document.createTextNode('desasociar');
                             action.appendChild(text);
                             cell.appendChild(action);
                         }

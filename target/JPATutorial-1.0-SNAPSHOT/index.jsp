@@ -33,6 +33,10 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -47,8 +51,12 @@
         <th>Id</th>
         <th>Name</th>
         <th>Country</th>
-        <th># Books</th>
-        <th>Actions</th>
+        <th>#Books</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Action</th>
+
     </tr>
     </thead>
     <tbody>
@@ -64,7 +72,9 @@
         <th>Last Name</th>
         <th>Gender</th>
         <th>Age</th>
-        <th>Actions</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -167,7 +177,7 @@
                     if (actions.includes('edit-library')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['librarId'] + '";');
+                        action.setAttribute('onclick', 'location.href="./edit-library.jsp?libraryId=' + d['libraryId'] + '";');
                         var text = document.createTextNode('Edit Library');
                         action.appendChild(text);
                         cell.appendChild(action);
@@ -178,7 +188,7 @@
                         var action = document.createElement('button');
                         var LibraryID = d['libraryId'];
                         action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + LibraryID +'&assosingLibIntro=true'+ '";');
-                        var text = document.createTextNode('Associate Library');
+                        var text = document.createTextNode('Associate');
                         action.appendChild(text);
                         cell.appendChild(action);
 
@@ -186,10 +196,9 @@
                     if (actions.includes('disassociate-edition')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        console.log("inicio 2 ----> "+d['libraryId']);
                         var LibraryID = d['libraryId'];
                         action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + LibraryID +'&aso=true'+'";');
-                        var text = document.createTextNode('Disassociate Library');
+                        var text = document.createTextNode('Disassociate');
                         action.appendChild(text);
                         cell.appendChild(action);
 
