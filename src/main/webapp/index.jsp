@@ -15,7 +15,7 @@
 <body>
 
 <br><br><br>
-<h1>Biblioteca - Taller 5 <img src="https://img-premium.flaticon.com/png/512/1946/1946079.png?token=exp=1621376787~hmac=b1ace130041d9954dc9bffe314ea223d" width="40px" height="40px"></h1>
+<h1>Biblioteca - Taller 5 <img src=./image/online-library.png width="40px" height="40px"></h1>
 <p class="subtitulo">Grupo : Syntax Error</p>
 <br><br><br>
 

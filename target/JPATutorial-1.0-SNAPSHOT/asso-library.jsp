@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./CSS/css.css">
     <title>JPA Tutorial</title>
     <style>
         table, th, td {
@@ -10,7 +11,11 @@
     </style>
 </head>
 <body>
-<h3>View of edition book</h3>
+<br><br><br>
+<h1>View of edition Book ></h1>
+<p class="subtitulo">Grupo : Syntax Error</p>
+<br><br><br>
+<div class="containerTablas">
 <table id="editionBookTbl">
     <thead>
     <tr>
@@ -99,5 +104,6 @@
     }
     printTable(elementId = 'editionBookTbl', servlet = 'list-edition', columns = ['edition_Id','description', 'release_year', 'book_id'], actions = ['delete-edition','associate','disassociate']);
 </script>
+</div>
 </body>
 </html>

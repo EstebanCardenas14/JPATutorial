@@ -172,6 +172,7 @@ thead th {
     height: auto;
     background-color: white;
     border-radius: 20px;
+    display: inline-block;
 }
 
 
@@ -197,5 +198,34 @@ thead th {
 }
 
 #viewBookTbl tr {
+    background-color: #e6e6e6d0;
+}
+
+
+
+
+
+#editionBookTbl {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#editionBookTbl td,
+#editionBookTbl th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+#editionBookTbl tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#editionBookTbl tr:hover {
+    background-color: #ddd;
+}
+
+#editionBookTbl tr {
     background-color: #e6e6e6d0;
 }
