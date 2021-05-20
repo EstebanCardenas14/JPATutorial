@@ -16,10 +16,8 @@ public class DesassoEditionServlet extends HttpServlet {
         response.setContentType("text/html");
         Integer editionId = Integer.parseInt(request.getParameter("edition_id"));
         Integer libraryId = Integer.parseInt(request.getParameter("libraryId"));
-        System.out.println("aca el library tercero ----> "  + libraryId);
-        System.out.println("aca el edition tercero ----> " + request.getParameter("edition_id"));
-          EditionService editionService= new EditionService();
-          editionService.disassociate(libraryId,editionId);
+        EditionService editionService= new EditionService();
+        editionService.disassociate(libraryId,editionId);
         response.sendRedirect("./index.jsp");
     }
 
