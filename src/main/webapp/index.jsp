@@ -98,12 +98,14 @@
                     if (actions.includes('delete-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./delete-author?authorId=' + d['authorId'] + '";');
+                        action.onclick = function() {
+                            alert("Para eliminar un autor, antes desasocia, sus libros de la librería si es el caso.");
+                            location.href='./delete-author?authorId='+d['authorId'];
+                        };
                         var text = document.createTextNode('Delete author');
                         action.appendChild(text);
                         cell.appendChild(action);
                     }
-
                     if (actions.includes('edit-author')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');

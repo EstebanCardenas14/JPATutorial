@@ -30,7 +30,7 @@ public class Library {
             joinColumns = {@JoinColumn(name = "library_id")},
             inverseJoinColumns = {@JoinColumn(name = "edition_id")}
     )
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Edition> editions;
 
     public Library() { }
