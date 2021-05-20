@@ -2,10 +2,8 @@ package edu.unbosque.JPATutorial.services;
 
 import edu.unbosque.JPATutorial.jpa.entities.Book;
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
-import edu.unbosque.JPATutorial.jpa.repositories.BookRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.BookRepositoryImpl;
-import edu.unbosque.JPATutorial.jpa.repositories.EditionRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.EditionRepositoryImpl;
+import edu.unbosque.JPATutorial.jpa.entities.Library;
+import edu.unbosque.JPATutorial.jpa.repositories.*;
 import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 
 import javax.ejb.Stateless;
@@ -22,6 +20,7 @@ public class EditionService {
 
     BookRepository bookRepository;
     EditionRepository editionRepository;
+    LibraryRepository libraryRepository;
 
     public void saveEdition(String descripion, Date releaseYear, Integer book_id){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
@@ -81,4 +80,24 @@ public class EditionService {
         entityManager.close();
         entityManagerFactory.close();
     }
+
+    public void associate(Integer libraryID,Integer editionID){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        editionRepository.associate(libraryID,editionID);
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+
+    public void disassociate(Integer libraryID,Integer editionID){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        editionRepository.disassociate(libraryID,editionID);
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
 }

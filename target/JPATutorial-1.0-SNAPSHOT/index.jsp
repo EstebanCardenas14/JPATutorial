@@ -167,7 +167,8 @@
                     if (actions.includes('associate-edition')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['library_id'] +'&assosingLibIntro=true'+ '";');
+                        var LibraryID = d['libraryId'];
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + LibraryID +'&assosingLibIntro=true'+ '";');
                         var text = document.createTextNode('Associate Library');
                         action.appendChild(text);
                         cell.appendChild(action);
@@ -176,8 +177,9 @@
                     if (actions.includes('disassociate-edition')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
-                        console.log(d['librarId']);
-                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + d['librarId'] +'&aso=true'+'";');
+                        console.log("inicio 2 ----> "+d['libraryId']);
+                        var LibraryID = d['libraryId'];
+                        action.setAttribute('onclick', 'location.href="./asso-library.jsp?libraryId=' + LibraryID +'&aso=true'+'";');
                         var text = document.createTextNode('Disassociate Library');
                         action.appendChild(text);
                         cell.appendChild(action);

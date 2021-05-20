@@ -62,7 +62,9 @@
                         if(actions.includes('associate')){
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
-                            action.setAttribute('onclick', 'location.href="./assos-edition?edition_id=' + d['edition_Id'] + '";');
+                            var libraryID = (<%= request.getParameter("libraryId") %>);
+                            console.log("veamos en associate --> " + libraryID)
+                            action.setAttribute('onclick', 'location.href="./assos-edition?edition_id=' + d['edition_Id']+'&libraryId=' + libraryID+ '";');
                             var text = document.createTextNode('segundo');
                             action.appendChild(text);
                             cell.appendChild(action);
@@ -78,7 +80,8 @@
                         if(actions.includes('disassociate')){
                             var cell = newRow.insertCell();
                             var action = document.createElement('button');
-                            action.setAttribute('onclick', 'location.href="./TERCERO-edition?edition_id=' + d['edition_Id'] + '";');
+                            var libraryID = (<%= request.getParameter("libraryId") %>);
+                            action.setAttribute('onclick', 'location.href="./TERCERO-edition?edition_id=' + d['edition_Id'] +'&libraryId=' + libraryID+ '";');
                             var text = document.createTextNode('tercero');
                             action.appendChild(text);
                             cell.appendChild(action);
