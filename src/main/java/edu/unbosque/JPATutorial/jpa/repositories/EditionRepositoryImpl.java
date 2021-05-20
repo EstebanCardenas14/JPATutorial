@@ -84,7 +84,6 @@ public class EditionRepositoryImpl implements EditionRepository{
             try {
                 entityManager.getTransaction().begin();
                 library.addEdition(edition);
-                entityManager.persist(library);
                 entityManager.getTransaction().commit();
             } catch (Exception e) {
 
@@ -96,16 +95,13 @@ public class EditionRepositoryImpl implements EditionRepository{
     @Override
     public void disassociate(Integer libraryID,Integer editionID) {
         Edition edition = entityManager.find(Edition.class, editionID);
-        System.out.println("edicion a desasociar we -----> "+edition);
-        Library library = entityManager.find(Library.class,libraryID);
-        System.out.println("libreria a desasociar we -----> "+library);
-        if(edition != null && library != null){
+        Library library = entityManager.find(Library.class, libraryID);
+        if(edition != null) {
             try {
                 entityManager.getTransaction().begin();
-                edition.getLibraries().remove(library);
                 library.getEditions().remove(edition);
                 entityManager.getTransaction().commit();
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
