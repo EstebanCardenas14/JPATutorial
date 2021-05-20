@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>JSP Tutorial</title>
+    <link rel="stylesheet" href="./CSS/css.css">
 
     <style>
         table, th, td {
@@ -13,13 +14,19 @@
 </head>
 <body>
 
-<h1>Library Manager</h1>
+<br><br><br>
+<h1>Biblioteca - Taller 5 <img src="https://img-premium.flaticon.com/png/512/1946/1946079.png?token=exp=1621376787~hmac=b1ace130041d9954dc9bffe314ea223d" width="40px" height="40px"></h1>
+<p class="subtitulo">Grupo : Syntax Error</p>
+<br><br><br>
 
-<button onclick="location.href='./form-library.jsp';">Create library</button>
-<button onclick="location.href='./form-author.jsp';">Create author</button>
-<button onclick="location.href='./form-customer.jsp';">Create customer</button>
+<div class="button-st">
+<button class="btn-start" onclick="location.href='./form-library.jsp';">Create library</button>
+<button class="btn-start" onclick="location.href='./form-author.jsp';">Create author</button>
+<button class="btn-start" onclick="location.href='./form-customer.jsp';">Create customer</button>
+</div>
+<div class="containerTablas">
 
-<h3>Libraries</h3>
+<h3 class="subtitulos">Libraries</h3>
 
 <table id="librariesTbl">
     <thead>
@@ -32,7 +39,7 @@
     </tbody>
 </table>
 
-<h3>Authors</h3>
+<h3 class="subtitulos">Authors</h3>
 
 <table id="authorsTbl">
     <thead>
@@ -47,7 +54,7 @@
     <tbody>
     </tbody>
 </table>
-<h3>Customers</h3>
+<h3 class="subtitulos">Customers</h3>
 
 <table id="customersTbl">
     <thead>
@@ -202,6 +209,7 @@
     // Printing customer
     printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'first_name', 'last_name', 'gender','age'], actions = ['create-rent','edit-customer' ,'delete-customer']);
 </script>
+</div>
 
 </body>
 </html>
