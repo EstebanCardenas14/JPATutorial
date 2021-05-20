@@ -1,6 +1,8 @@
 package edu.unbosque.JPATutorial.servlets;
 
 import edu.unbosque.JPATutorial.services.CustomerService;
+import edu.unbosque.JPATutorial.services.EditionService;
+import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "cretateCustomerServlet", value = "/create-customer")
 public class CreateCustomerServler  extends HttpServlet {

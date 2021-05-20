@@ -17,8 +17,6 @@ public class DeleteEditionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         Integer editionId = Integer.parseInt(request.getParameter("edition_id"));
-        System.out.println("aca el edition wero ----> " + request.getParameter("edition_id"));
-        System.out.println("aca el edition wero ----> " + editionId);
         EditionService editionService= new EditionService();
          editionService.deleteEdition(editionId);
         response.sendRedirect("./index.jsp");

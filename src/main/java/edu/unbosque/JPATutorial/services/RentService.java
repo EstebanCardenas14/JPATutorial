@@ -27,28 +27,31 @@ public class RentService {
         customerRepository = new CustomerRepositoryImpl(entityManager);
         rentRepository = new RentRepositoryImpl(entityManager);
         editionRepository = new EditionRepositoryImpl(entityManager);
+
         Rent rent = new Rent(renting_Date);
         Optional<Customer> customer = customerRepository.findByEmail(email);
 
-     customer.ifPresent(c -> {
-         c.addRents(rent );
-         customerRepository.save(c);
-     });
-     Optional<Edition> edition = editionRepository.findById(edition_id);
-       edition.ifPresent(d ->{
-           d.addRents(rent);
-           editionRepository.save(d);
+        if (!customer.isPresent())
+            System.out.println("El id del cliente ingresado no existe!");
+        Optional<Edition> edition = editionRepository.findById(edition_id);
 
-       });
-
+        if (!edition.isPresent())
+            System.out.println("El id del edición ingresado no existe!");
+        customer.ifPresent(a -> {
+            a.addRents(rent);
+            customerRepository.save(a);
+        });
+        edition.ifPresent(e -> {
+            e.addRents(rent);
+            editionRepository.save(e);
+        });
         entityManager.close();
         entityManagerFactory.close();
-
-
+        System.out.println("Se ha guardado exitosamente");
 
     }
 
-    public List<RentPOJO> listRent(){
+    public List<RentPOJO> listRent(String email){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -58,11 +61,19 @@ public class RentService {
         entityManager.close();
         entityManagerFactory.close();
 
-        List<RentPOJO> rentPOJOS = new ArrayList<>();
-        for (Rent rent : rents){
-            rentPOJOS.add(new RentPOJO(rent.getRent_id(), rent.getCustomer().getEmail(),rent.getEdition().getEditionId(),rent.getRenting_Date()));
+        List<RentPOJO> rentPOJOList = new ArrayList<>();
+
+        for (Rent rent : rents) {
+            if (rent.getCustomer().getEmail().equals(email)) {
+                rentPOJOList.add(new RentPOJO(
+                        rent.getRent_id(),
+                        rent.getCustomer().getEmail(),
+                        rent.getEdition().getEditionId(),
+                        rent.getRenting_Date()));
+            }
+
         }
-        return rentPOJOS;
+        return rentPOJOList;
     }
 
     public void deleteRent(Integer rentId){
